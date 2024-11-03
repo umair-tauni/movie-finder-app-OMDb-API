@@ -9,6 +9,7 @@ class MovieDescription:
     # method
     def searched_movie(self, title):
         try:
+            # fetch movie data from the API
             url = f'http://www.omdbapi.com/?t={title}&apikey={self.api_key}'
             response = requests.get(url)
             # print(response.status_code)
@@ -16,6 +17,7 @@ class MovieDescription:
             data = response.json()
             if response.status_code == 200:
                 if data.get('Response') == 'True':
+                    # display movie information
                     print('**********************************')
                     print('Movie Title: ', data.get('Title'))
                     print('Movie Year: ', data.get('Year'))
